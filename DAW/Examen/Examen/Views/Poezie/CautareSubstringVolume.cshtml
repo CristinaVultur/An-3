@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Volume Substring";
+}
+<h2>@ViewBag.Title</h2>
+@foreach (var poezie in ViewBag.Poezii)
+{
+    <div class="panel-body">
+        @Html.Label("Titlu", "Titlu:")
+        <br />
+        <p>@poezie.Titlu</p>
+        @Html.Label("Autor", "Autor:")
+        <br />
+        <p>@poezie.Autor</p>
+        <br />
+        @Html.Label("NumarStrofe", "Numar Strofe:")
+        <br />
+        <p>@poezie.NumarStrofe</p>
+        <br />
+        @Html.Label("Volum", "Nume Volum:")
+        <br />
+        
+    </div>
+}
+<br />

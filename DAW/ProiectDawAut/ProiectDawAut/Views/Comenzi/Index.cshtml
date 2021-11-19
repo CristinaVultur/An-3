@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Comenzi";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (ViewBag.Comenzi != null)
+{
+    foreach (var comanda in ViewBag.Comenzi)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.Label("IdComanda", "Id:")
+                <br />
+                <p>@comanda.IdComanda</p>
+                @Html.Label("UserId", "Id utilizator:")
+                <br />
+                <p>@comanda.UserId</p>
+
+                @Html.Label("Total", "Total:")
+                <br />
+                <p>@comanda.Total</p>
+
+                @using (Html.BeginForm(actionName: "Details", controllerName: "Comenzi", method: FormMethod.Get,
+                routeValues: new { id = comanda.IdComanda }))
+                {
+                    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Detalii</button>
+                }
+            </div>
+        </div>
+    }
+}
+
+
+<br />
+@Html.ActionLink("Plaseaza o comanda", "New")

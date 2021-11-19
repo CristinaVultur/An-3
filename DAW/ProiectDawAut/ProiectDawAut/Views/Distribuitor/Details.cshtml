@@ -1,0 +1,37 @@
+﻿@model ProiectDawAut.Models.Distribuitor
+
+<h2>@Model.Nume</h2>
+<table>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(p => p.ContactInfo.PhoneNumber, "Phone number:", new { style = "margin-right:10px" })</td>
+            <td>@Html.DisplayFor(p => p.ContactInfo.PhoneNumber)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ContactInfo.Adresa, "Adress:", new { style = "margin-right:10px" })</td>
+            <td>@Html.DisplayFor(p => p.ContactInfo.Adresa)</td>
+        </tr>
+
+
+
+    </tbody>
+</table>
+<br />
+@if (Model.Bijuterii.Count > 0)
+{
+    @Html.Label("Bijuterii", "Bijuterii:")
+    <br />
+    <ul>
+        @foreach (var bijuterie in Model.Bijuterii)
+        {
+            <li>@bijuterie.Nume</li>
+            <img src="@bijuterie.Image" style="overflow: hidden; position: relative; width:200px; height:200px;" />
+        }
+    </ul>
+}
+<br />
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Distribuitor", method: FormMethod.Post, routeValues: new { id = Model.DistribuitorId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}

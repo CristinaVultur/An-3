@@ -1,0 +1,48 @@
+﻿@model ProiectDawAut.Models.Comenzi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.IdComanda</h2>
+
+@Html.Label("Total", "Total:")
+<br />
+<p>@Model.Total</p>
+
+<br />
+
+ @Html.Label("UserId", "User:")
+ <br />
+ <p>@Model.UserId</p>
+ <br />
+
+
+
+@if (Model.Bijuterii.Count > 0)
+{
+    @Html.Label("Bijuterii","Bijuterii: ")
+    <br />
+    <ul>
+        @foreach (var bijuterie in Model.Bijuterii)
+        {
+            <li>@bijuterie.Nume</li>
+            <li>@bijuterie.Pret</li>
+        }
+    </ul>
+}
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Comenzi", method: FormMethod.Get, routeValues: new { id = Model.IdComanda }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Comenzi", method: FormMethod.Post, routeValues: new { id = Model.IdComanda }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}
+<br />
+
+
+

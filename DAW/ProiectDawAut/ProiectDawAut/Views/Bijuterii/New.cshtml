@@ -1,0 +1,36 @@
+﻿@model ProiectDawAut.Models.Bijuterii
+@{
+    ViewBag.Title = "Create";
+}
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm(actionName: "New", controllerName: "Bijuterii", method: FormMethod.Post))
+{
+    @Html.Label("Nume", "Nume Bijuterie:")
+    <br />
+    @Html.TextBoxFor(b => b.Nume, null, new { placeholder = "Scrie numele bijuteriei", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Nume, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Tip", "Tipul:")
+    <br />
+    @Html.TextBoxFor(b => b.Tip, null, new { placeholder = "inel/cercei/lantisor", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Tip, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Pret", "Pret Bijuterie:")
+    <br />
+    @Html.TextBoxFor(b => b.Pret, null, new { placeholder = "Scrie Pretul bijuteriei", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Pret, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Imagine", "Imagine:")
+    <br />
+    @Html.TextArea("Imagine", null, new { placeholder = "Link catre imagine", @class = "form-control", @rows = "5" })
+    @Html.ValidationMessageFor(b => b.Image, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Distribuitor", "Distribuitor:")
+    <br />
+    @Html.DropDownListFor(b => b.DistribuitorId, new SelectList(Model.DistribuitorsList, "Value", "Text"), "Alege distribuitor", new { @class = "form - control" })
+
+    @Html.ValidationMessageFor(b => b.DistribuitorId, "", new { @class = "text-danger" })
+    <br />
+    <button class="btn btn-primary" type="submit">Create</button>
+}
+

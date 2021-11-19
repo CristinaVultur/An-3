@@ -1,0 +1,48 @@
+﻿@model ProiectDawAut.Models.Distribuitor
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Distribuitor"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(p => p.DistribuitorId)
+    <br />
+
+    <br />
+    @Html.Label("Nume", "Nume distribuitor:")
+    <br />
+    @Html.EditorFor(b => b.Nume, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Nume, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    @Html.Label("PhoneNumber", "Numar Telefon:")
+    <br />
+    @Html.EditorFor(b => b.ContactInfo.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.ContactInfo.PhoneNumber, "", new { @class = "text-danger" })
+    <br />
+    <label> Start Date:</label>
+
+    <br />
+    @Html.EditorFor(b => b.ContactInfo.StartDay, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.ContactInfo.StartDay, "", new { @class = "text-danger" })
+
+    @Html.EditorFor(b => b.ContactInfo.StartMonth, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.ContactInfo.StartMonth, "", new { @class = "text-danger" })
+
+    @Html.EditorFor(b => b.ContactInfo.StartYear, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.ContactInfo.StartYear, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    @Html.Label("Adresa", "Adresa:")
+    <br />
+    @Html.TextAreaFor(b => b.ContactInfo.Adresa, new { @class = "form-control", @rows = "5" })
+    @Html.ValidationMessageFor(b => b.ContactInfo.Adresa, "", new { @class = "text-danger" })
+    <br />
+
+    <br />
+    <button class="btn btn-primary" type="submit">Update</button>
+}

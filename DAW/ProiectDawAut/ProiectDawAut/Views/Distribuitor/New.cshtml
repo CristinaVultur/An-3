@@ -1,0 +1,48 @@
+﻿@model ProiectDawAut.Models.DistribuitorContactViewModel
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Distribuitor", method: FormMethod.Post))
+{
+    @Html.LabelFor(p => p.Nume, "Nume:")
+    <br />
+    @Html.TextBoxFor(p => p.Nume, null, new { placeholder = "Nume distribuitor", @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.Nume, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.LabelFor(p => p.PhoneNumber, "Numar telefon:")
+    <br />
+    @Html.TextBoxFor(p => p.PhoneNumber, null, new { placeholder = "Scrie nr telefon", @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.PhoneNumber, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.LabelFor(p => p.Adresa, "Adresa:")
+    <br />
+    @Html.TextBoxFor(p => p.Adresa, null, new { placeholder = "Scrie nr telefon", @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.Adresa, "", new { @class = "text-danger" })
+    <br />
+
+    <label>Start Date:</label>
+    <br />
+    @Html.TextBoxFor(p => p.StartDay, null, new { placeholder = "Day", @class = "form-control", @style = "margin-bottom:3px" })
+    @Html.ValidationMessageFor(p => p.StartDay, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(p => p.StartMonth, null, new { placeholder = "Month", @class = "form-control", @style = "margin-bottom:3px" })
+    @Html.ValidationMessageFor(p => p.StartMonth, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(p => p.StartYear, null, new { placeholder = "Year", @class = "form-control", @style = "margin-bottom:3px", @type = "number" })
+    @Html.ValidationMessageFor(p => p.StartYear, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+
+    <br />
+    <br />
+
+    <button class="btn btn-primary" type="submit">Create</button>
+}

@@ -1,0 +1,27 @@
+﻿@model ProiectDawAut.Models.Comenzi
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Comenzi"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(b => b.IdComanda)
+    <br />  
+
+    @Html.LabelFor(b => b.BijuteriiList, "Alege bijuterii:")
+    <br />
+    foreach (var bijuterie in Model.BijuteriiList)
+    {
+        @Html.HiddenFor(b => bijuterie.Id)
+        @Html.HiddenFor(b => bijuterie.Nume)
+        @Html.CheckBoxFor(b => bijuterie.Checked)
+        @Html.DisplayFor(b => bijuterie.Nume)
+        <br />
+    }
+    <br />
+    <button class="btn btn-primary" type="submit">Update</button>
+}

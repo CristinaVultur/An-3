@@ -1,0 +1,37 @@
+﻿@model ProiectDaw.Models.Bijuterii
+@{
+    ViewBag.Title = "Update";
+}
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Bijuterii"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <!--camp ascuns pentru a retine id-ul obiectului-->
+    @Html.HiddenFor(b => b.IdBijuterie)
+    <br />
+    @Html.Label("Nume", "Nume bijuterie:")
+    <br />
+    @Html.EditorFor(b => b.Nume, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Nume, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    @Html.Label("Tip", "Tip:")
+    <br />
+    @Html.Editor("Tip", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Tip, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Pret", "Pret bijuterie:")
+    <br />
+    @Html.EditorFor(b => b.Pret, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.Pret, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    @Html.Label("Image", "Imagine:")
+    <br />
+    @Html.TextAreaFor(b => b.Image, new { @class = "form-control", @rows = "5" })
+    @Html.ValidationMessageFor(b => b.Image, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <button class="btn btn-primary" type="submit">Update</button>
+}
+

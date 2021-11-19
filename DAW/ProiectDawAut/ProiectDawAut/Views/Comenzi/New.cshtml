@@ -1,0 +1,28 @@
+﻿@model ProiectDawAut.Models.Comenzi
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Comenzi", method: FormMethod.Post))
+{
+
+
+    @Html.LabelFor(b => b.BijuteriiList, "Alege Bijuterii:")
+    <br />
+    
+        foreach (var bijuterie in Model.BijuteriiList)
+        {
+            @Html.HiddenFor(b => bijuterie.Id)
+            @Html.HiddenFor(b => bijuterie.Nume)
+            @Html.CheckBoxFor(b => bijuterie.Checked)
+            @Html.DisplayFor(b => bijuterie.Nume)
+            <br />
+        }
+        <br />
+    
+
+    <br />
+    <button class="btn btn-primary" type="submit">Create</button>
+}

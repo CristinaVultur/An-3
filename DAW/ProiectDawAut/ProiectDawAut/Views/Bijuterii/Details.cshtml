@@ -1,0 +1,56 @@
+﻿@model ProiectDawAut.Models.Bijuterii
+@{
+    ViewBag.Title = "Details";
+
+}
+<h2>Details</h2>
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Label("Nume", "Nume:")
+        <br />
+        @Html.DisplayFor(b => b.Nume)
+        <br />
+        <br />
+        @Html.Label("Tip", "Tip:")
+        <br />
+        @Html.DisplayFor(b => b.Tip)
+        <br />
+        <br />
+        @Html.Label("Pret", "Pret:")
+        <br />
+        @Html.DisplayFor(b => b.Pret)
+        <br />
+        @if (Model.Distribuitor != null)
+        {
+            @Html.Label("Distribuitor", "Distribuitor:")
+            <br />
+            <p>@Model.Distribuitor.Nume</p>
+            @Html.Label("Distribuitor", "Contact Info:")
+            <br />
+            <p>@Model.Distribuitor.ContactInfo.PhoneNumber</p>
+        }
+        <br />
+        @Html.Label("Image", "Image:")
+        <br />
+        <img src="@Html.DisplayFor(b => b.Image)" style="overflow: hidden; position: relative; width:200px; height:200px;" />
+
+        
+
+
+    </div>
+</div>
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Bijuterii", method: FormMethod.Get, routeValues:
+new { id = Model.IdBijuterie }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Bijuterii", method: FormMethod.Post, routeValues:
+new { id = Model.IdBijuterie }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}
+<br />
+
+
+
